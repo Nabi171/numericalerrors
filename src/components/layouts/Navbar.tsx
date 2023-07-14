@@ -13,7 +13,7 @@ export default function Navbar() {
           </div>
           <div className="ml-4 flex items-center md:ml-6">
             <Link
-              to="/"
+              to="/allbooks"
               className="px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
             >
               All Books

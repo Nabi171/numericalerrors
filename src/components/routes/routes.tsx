@@ -4,6 +4,7 @@ import { createBrowserRouter } from "react-router-dom"
 import App from '../../App'
 import LoginForm from '../pages/LoginForm'
 import SignUpForm from '../pages/SignUpForm'
+import AllBooks from '../pages/Books/AllBooks'
 
 const routes = createBrowserRouter([
   
@@ -20,6 +21,10 @@ const routes = createBrowserRouter([
   {
     path: "/signup",
     element: <SignUpForm />,
+  },
+  {
+    path: "/allbooks",
+    element: <AllBooks />,
   },
 
 ])
