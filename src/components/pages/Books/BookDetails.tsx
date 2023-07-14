@@ -1,6 +1,8 @@
 /* eslint-disable prettier/prettier */
 import { useParams } from 'react-router-dom';
-import {useSingleBookQuery} from "../../../features/books/booksApi"
+import {useSingleBookQuery} from "../../../features/books/booksApi";
+import Loading from "../../ui/Loading"
+
 export default function BookDetails({book}) {
     const { bookId } = useParams();
     const {data,isLoading,error}=useSingleBookQuery(bookId);
@@ -8,7 +10,7 @@ export default function BookDetails({book}) {
     // const { title, author, genre, publicationDate }=data;
         return (
             <>
-           { !data ? <p>loading...</p> :  <div className="bg-white rounded-lg shadow-md p-4">
+           { !data ? <Loading/> :  <div className="bg-white rounded-lg shadow-md p-4">
          <h2 className="text-xl font-bold mb-2">{data?.title}</h2>
       <p className="text-gray-700 mb-2">Author:{data?.author} </p>
       <p className="text-gray-700 mb-2">Genre:{data?.genre} </p>
