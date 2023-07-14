@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { useForm } from 'react-hook-form';
-export default function AddNew() {
+export default function EditeBook() {
     return(
      <div>
         
