@@ -7,8 +7,7 @@ import SignUpForm from '../pages/SignUpForm'
 
 const routes = createBrowserRouter([
   
-    // path: '/',
-    // element: <App />,
+   
   {
     path: "/",
     element: <App />,
