@@ -24,12 +24,12 @@ export default function Navbar() {
             >
               SignUp
             </Link>
-            <a
-              href="#"
+            <Link
+              to="/login"
               className="px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
             >
            SignIn
-            </a>
+            </Link>
          
           </div>
         </div>

@@ -4,7 +4,7 @@ import { FcGoogle } from 'react-icons/fc';
 import { createUser } from '../../features/user/userSlice';
 import {useAppDispatch} from "../../app/hooks"
 import Navbar from "../layouts/Navbar"
-
+import { useNavigate } from 'react-router-dom';
 type UserAuthFormProps = React.HTMLAttributes<HTMLDivElement>;
 
 interface SignupFormInputs {
@@ -13,6 +13,7 @@ interface SignupFormInputs {
 }
 
 export default function SignupForm({ className, ...props }: UserAuthFormProps) {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -22,7 +23,8 @@ export default function SignupForm({ className, ...props }: UserAuthFormProps) {
 const dispatch=useAppDispatch()
 
   const onSubmit = (data: SignupFormInputs) => {
-    console.log(data);
+    // console.log(data);
+    navigate('/');
    dispatch(createUser({email:data.email,password:data.password}))
   };
 
