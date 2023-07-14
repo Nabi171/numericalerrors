@@ -3,6 +3,15 @@ import { useParams } from 'react-router-dom';
 import {useSingleBookQuery} from "../../../features/books/booksApi";
 import Loading from "../../ui/Loading"
 import { AiFillDelete } from 'react-icons/ai';
+import { BsFillEnvelopeFill} from "react-icons/bs";
+
+const dummyComments = [
+  'Bhalo na',
+  'Ki shob ghori egula??',
+  'Eta kono product holo ??',
+  '200 taka dibo, hobe ??',
+];
+
 
 export default function BookDetails({book}) {
     const { bookId } = useParams();
@@ -29,7 +38,33 @@ export default function BookDetails({book}) {
        </button>
       </div>
             </div>}
-            </div>
+
+      <div>
+        <form className="flex gap-1  justify-center">
+      <input
+      type="text"
+      placeholder="Write your review"
+      className="border border-gray-300 focus:ring-blue-500 focus:border-blue-500 block w-full rounded-md py-2 px-4 mt-6"
+     />
+        <button className="border border-green-500 text-green-800 hover:bg-green-500 hover:text-white font-bold py-2 px-4 rounded ">
+    Add-Review
+    </button>
+       </form>
+    </div>
+
+    <div className="mt-10">
+    <h2 className='text-white font-extralight font-extrabold mb-2'>Reviews</h2>
+        {dummyComments.map((comment:string, index:number) => (
+          <div key={index} className="flex gap-3 items-center mb-5">
+          
+            <BsFillEnvelopeFill className='text-white' /> 
+            <p className="text-white"> {comment}</p>
+          </div>
+        ))}
+      </div>
+
+
+</div>
         </>
           );;
       }
