@@ -1,43 +1,38 @@
 /* eslint-disable prettier/prettier */
-
-// 'use client';
-
-// import * as React from 'react';
-
-import { cn } from '../lib/utils';
-// import { Button } from '../ui/button';
-// import { Input } from '../ui/input';
-// import { Label } from '../ui/label';
-// import { useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { FcGoogle } from 'react-icons/fc';
-// import { createUser } from '../redux/features/user/userSlice';
-// import {useAppDispatch} from "../redux/hook"
+import { createUser } from '../../features/user/userSlice';
+import {useAppDispatch} from "../../app/hooks"
+import Navbar from "../layouts/Navbar"
 
+type UserAuthFormProps = React.HTMLAttributes<HTMLDivElement>;
 
-// type UserAuthFormProps = React.HTMLAttributes<HTMLDivElement>;
+interface SignupFormInputs {
+  email: string;
+  password: string;
+}
 
-// interface SignupFormInputs {
-//   email: string;
-//   password: string;
-// }
+export default function SignupForm({ className, ...props }: UserAuthFormProps) {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<SignupFormInputs>();
 
-export default function SignupForm() {
-//   const {
-//     register,
-//     handleSubmit,
-//     formState: { errors },
-//   } = useForm<SignupFormInputs>();
+const dispatch=useAppDispatch()
 
-// const dispatch=useAppDispatch()
-
-//   const onSubmit = (data: SignupFormInputs) => {
-//     console.log(data);
-//    dispatch(createUser({email:data.email,password:data.password}))
-//   };
+  const onSubmit = (data: SignupFormInputs) => {
+    console.log(data);
+   dispatch(createUser({email:data.email,password:data.password}))
+  };
 
   return (
+    <>
+    <Navbar/>
     <div className="bg-white rounded-lg shadow-md p-6 md:p-8 lg:p-10 container mx-auto mt-3 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6">
-      <form  className="">
+      <form 
+      onSubmit={handleSubmit(onSubmit)}
+      className="">
         <h5 className='text-center text-blue-400 text-xl font-bold'>Please SignUp</h5>
         <hr/>
         <div className="grid gap-2">
@@ -53,18 +48,18 @@ export default function SignupForm() {
               autoCapitalize="none"
               autoComplete="email"
               autoCorrect="off"
-            //   {...register('email', { required: 'Email is required' })}
+             {...register('email', { required: 'Email is required' })}
             />
-            {/* {errors.email && <p>{errors.email.message}</p>} */}
+            {errors.email && <p>{errors.email.message}</p>}
             <input
               id="password"
               placeholder="your password"
               type="password"
               autoCapitalize="none"
               autoCorrect="off"
-            //   {...register('password', { required: 'Password is required' })}
+            {...register('password', { required: 'Password is required' })}
             />
-            {/* {errors.password && <p>{errors.password.message}</p>} */}
+            {errors.password && <p>{errors.password.message}</p>}
             <input
               id="password"
               placeholder="confirm password"
@@ -103,5 +98,7 @@ export default function SignupForm() {
       {/* </span> */}
      
     </div>
+
+    </>
   );
 }

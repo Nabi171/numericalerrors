@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 // import React from 'react';
-
+import { Link } from "react-router-dom";
 export default function Navbar() {
   return (
     <nav className="bg-gray-800 py-4">
@@ -12,18 +12,18 @@ export default function Navbar() {
             </div>
           </div>
           <div className="ml-4 flex items-center md:ml-6">
-            <a
-              href="#"
+            <Link
+              to="/"
               className="px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
             >
               All Books
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="/signup"
               className="px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
             >
               SignUp
-            </a>
+            </Link>
             <a
               href="#"
               className="px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700"

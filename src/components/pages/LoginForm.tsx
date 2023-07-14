@@ -29,7 +29,7 @@ export default function LoginForm() {
       <form className="mb-3"
     //   onSubmit={handleSubmit(onSubmit)}
       >
-        <h5 className='text-center text-blue-400 text-xl font-bold mb-2'>Please SignUp</h5>
+        <h5 className='text-center text-blue-400 text-xl font-bold mb-2'>SignIn</h5>
         <hr clasName='mb-2' />
         <div className="grid gap-2">
           <div className="grid gap-1">
