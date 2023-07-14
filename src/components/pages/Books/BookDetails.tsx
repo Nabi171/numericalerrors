@@ -13,14 +13,14 @@ export default function BookDetails({book}) {
             <>
             <div className="container mx-auto">
            { !data ? <Loading/> :  <div className="bg-white rounded-lg shadow-md p-4 w-96 mx-auto mt-10">
-         <h2 className="text-xl font-bold mb-2">{data?.title}</h2>
+         <h2 className="text-xl font-bold mb-2">{data?.title}</h2><hr/>
       <p className="text-gray-700 mb-2">Author:{data?.author} </p>
       <p className="text-gray-700 mb-2">Genre:{data?.genre} </p>
       <p className="text-gray-700 ">Publication Date: {data?.publicationDate}</p>
 
-      <div className="flex justify-between">
-          <button className="bg-blue-500 hover:bg-blue-600 mt-3 text-white font-bold py-2 px-4 rounded ">
-          Edite
+      <div className="flex justify-between mt-5">
+          <button className="border border-green-500 text-green-800 hover:bg-green-500 hover:text-white font-bold py-2 px-4 rounded ">
+          Edit
         </button>
  
         <button
