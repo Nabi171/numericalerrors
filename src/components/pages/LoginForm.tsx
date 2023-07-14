@@ -24,10 +24,13 @@ export default function LoginForm() {
  
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6 md:p-8 lg:p-10 container mx-auto mt-3 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6">
-      <form 
+    <div className="bg-white rounded-lg shadow-md p-6 md:p-8 lg:p-10 container mx-auto mt-12
+     w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6 ">
+      <form className="mb-3"
     //   onSubmit={handleSubmit(onSubmit)}
       >
+        <h5 className='text-center text-blue-400 text-xl font-bold mb-2'>Please SignUp</h5>
+        <hr clasName='mb-2' />
         <div className="grid gap-2">
           <div className="grid gap-1">
             <label className="sr-only" htmlFor="email">
@@ -53,11 +56,11 @@ export default function LoginForm() {
             />
             {/* {errors.password && <p>{errors.password.message}</p>} */}
           </div>
-          <button>Login with email</button>
+          <button className=' bg-blue-500  hover:bg-blue-600 text-white font-bold py-2 px-4 rounded ' >Login with email</button>
         </div>
       </form>
-      <div className="relative">
-        <div className="absolute inset-0 flex items-center">
+      <div className="relative ">
+        <div className="absolute inset-0 mb-2 flex items-center">
           <span className="w-full border-t" />
         </div>
         <div className="relative flex justify-center text-xs uppercase">
@@ -66,13 +69,14 @@ export default function LoginForm() {
           </span>
         </div>
       </div>
-      <button
+      <button 
+      className=" flex justify-center ms-6 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mt-2"
         variant="outline"
         type="button"
-        className="flex items-center justify-between"
+       
       >
         <p>Google</p>
-        <FcGoogle />
+        <FcGoogle className='mt-1 ms-2'  />
       </button>
     </div>
   );

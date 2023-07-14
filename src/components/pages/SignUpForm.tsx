@@ -92,7 +92,7 @@ export default function SignupForm() {
       <button 
         variant="outline"
         type="button"
-        className=" flex justify-center ms-6 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+        className=" flex justify-center ms-6 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2  px-4 rounded"
       >
         <p>Google</p>
         <FcGoogle className='mt-1 ms-2' />
