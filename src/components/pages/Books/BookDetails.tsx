@@ -1,10 +1,11 @@
 /* eslint-disable prettier/prettier */
 import { useParams } from 'react-router-dom';
 import {useSingleBookQuery} from "../../../features/books/booksApi";
+import {useDeleteBookMutation} from "../../../features/books/booksApi";
 import Loading from "../../ui/Loading"
 import { AiFillDelete } from 'react-icons/ai';
 import { BsFillEnvelopeFill} from "react-icons/bs";
-
+import { useNavigate } from 'react-router';
 const dummyComments = [
   'Bhalo na',
   'Ki shob ghori egula??',
@@ -16,8 +17,18 @@ const dummyComments = [
 export default function BookDetails({book}) {
     const { bookId } = useParams();
     const {data,isLoading,error}=useSingleBookQuery(bookId);
+    const [deleteBook] = useDeleteBookMutation(bookId);
     // const {}
     // const { title, author, genre, publicationDate }=data;
+    const navigate = useNavigate();
+    const handleDelete = (bookId) => {
+        deleteBook(bookId);
+        console.log(bookId)
+        navigate('/allbooks')
+        window.location.reload();
+    };
+
+
         return (
             <>
             <div className="container mx-auto">
@@ -33,6 +44,7 @@ export default function BookDetails({book}) {
         </button>
  
         <button
+        onClick={()=>handleDelete(bookId)}
       className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">
            <AiFillDelete/>
        </button>
