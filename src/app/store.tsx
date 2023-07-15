@@ -2,11 +2,11 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit"
 import userReducer from "../features/user/userSlice"
 import { api } from "../../src/components/api/apiSlice"
-
+import bookReducer from '../features/books/booksSlice';
 
 export const store = configureStore({
   reducer: {
-    // counter: counterReducer,
+    books: bookReducer,
     user: userReducer,
     [api.reducerPath]: api.reducer,
   },
