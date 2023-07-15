@@ -32,15 +32,15 @@ const bookApi = api.injectEndpoints({
     invalidatesTags: ["books"],
 }), 
    
-  editbook: builder.mutation({
-  query: ({ id, data }) => ({
-      url: `/book/${id}`,
+  editBook: builder.mutation({
+  query: ({ _id, data }) => ({
+      url: `/book/${_id}`,
       method: "PUT",
       body: data,
   }),
   invalidatesTags: (result, error, arg) => [
-      "books",
-      { type: "books", id: arg.id },
+      "book",
+      { type: "book", id: arg.id },
   ],
    }),  
 
