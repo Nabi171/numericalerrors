@@ -1,26 +1,15 @@
 /* eslint-disable prettier/prettier */
-import { useForm } from 'react-hook-form';
-import {useSingleBookQuery} from "../../../features/books/booksApi";
-import { useParams } from 'react-router-dom';
-import {EditForm} from "../../../components/pages/Books/EditForm";
 import React, { useState } from 'react';
+export default function EditForm() {
+    const {
+        _id,
+        title: initialTitle,
+        author: initialAuthor,
+        genre: initialtotalGenre,
+        publicationDate: initialtotalPublicationDate,
 
-export default function EditeBook() {
-  const { editId } = useParams();
-  const { data, isLoading, error } = useSingleBookQuery(editId);
-// console.log('this is data',data);
-// console.log(editId)
-
-const {
-  _id,
-  title: initialTitle,
-  author: initialAuthor,
-  genre: initialtotalGenre,
-  publicationDate: initialtotalPublicationDate,
-
-} = data;
+    } = data;
 const [title, setTitle] = useState(initialTitle);
-// console.log('initial',initialTitle)
 const [author, setAuthor] = useState(initialAuthor);
 const [genre, setGenre] = useState(initialtotalGenre);
 const [publicationDate, setPublicationDate] = useState(initialtotalPublicationDate);
@@ -28,8 +17,6 @@ const [publicationDate, setPublicationDate] = useState(initialtotalPublicationDa
 
 
     return(
-     <div>
-        
         <form 
 
         // onSubmit={handleSubmit(onSubmit)} 
@@ -41,7 +28,7 @@ const [publicationDate, setPublicationDate] = useState(initialtotalPublicationDa
           type="text"
           id="title"
           value={title}
-          onChange={(e) => setTitle(e.target.value)}
+        //   onChange={(e) => setTitle(e.target.value)}
         //   {...register('title', { required: true })}
           className={`border focus:ring-blue-500 focus:border-blue-500 block w-full rounded-md py-2 px-4`}
         />
@@ -53,8 +40,6 @@ const [publicationDate, setPublicationDate] = useState(initialtotalPublicationDa
         <input
           type="text"
           id="author"
-          value={author}
-          onChange={(e) => setAuthor(e.target.value)}
         //   {...register('author', { required: true })}
           className={`border focus:ring-blue-500 focus:border-blue-500 block w-full rounded-md py-2 px-4`}
         />
@@ -66,8 +51,7 @@ const [publicationDate, setPublicationDate] = useState(initialtotalPublicationDa
         <input
           type="text"
           id="genre"
-          value={genre}
-          onChange={(e) => setGenre(e.target.value)}
+          
         //   {...register('genre', { required: true })}
           className={`border focus:ring-blue-500 focus:border-blue-500 block w-full rounded-md py-2 px-4`}
         />
@@ -79,18 +63,14 @@ const [publicationDate, setPublicationDate] = useState(initialtotalPublicationDa
         <input
           type="text"
           id="publicationDate"
-          value={publicationDate}
-          onChange={(e) => setPublicationDate(e.target.value)}
         //   {...register('publicationDate', { required: true })}
           className={`border focus:ring-blue-500 focus:border-blue-500 block w-full rounded-md py-2 px-4`}
         />
         {/* {errors.publicationDate && <p className="text-red-500 text-xs mt-1">Publication Date is required.</p>} */}
       </div>
 
-      <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Edit</button>
+      <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Submit</button>
     </form>
-        
-    </div>
      );
   }
   
