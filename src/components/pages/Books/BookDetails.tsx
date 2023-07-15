@@ -23,10 +23,15 @@ export default function BookDetails({book}) {
     const navigate = useNavigate();
     const handleDelete = (bookId) => {
         deleteBook(bookId);
-        console.log(bookId)
+        // console.log(bookId)
         navigate('/allbooks')
         window.location.reload();
     };
+
+  const handleEdit=(bookId)=>{
+navigate(`/edit/${bookId}`)
+console.log(bookId)
+  }
 
 
         return (
@@ -39,7 +44,9 @@ export default function BookDetails({book}) {
       <p className="text-gray-700 ">Publication Date: {data?.publicationDate}</p>
 
       <div className="flex justify-between mt-5">
-          <button className="border border-green-500 text-green-800 hover:bg-green-500 hover:text-white font-bold py-2 px-4 rounded ">
+          <button
+          onClick={()=>handleEdit(bookId)}
+          className="border border-green-500 text-green-800 hover:bg-green-500 hover:text-white font-bold py-2 px-4 rounded ">
           Edit
         </button>
  
