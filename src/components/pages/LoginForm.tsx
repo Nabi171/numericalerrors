@@ -3,7 +3,7 @@
 
 import { useEffect } from 'react';
 
-
+import Navbar from "../../components/layouts/Navbar"
 import { useForm } from 'react-hook-form';
 import {useNavigate} from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc';
@@ -38,9 +38,13 @@ const onSubmit = (data: LoginFormInputs) => {
       navigate('/')
     }
       },[user.email,isLoading])
-    
+    // const handlego=()=>{
+    //   navigate('/signup')
+    // }
 
   return (
+    <>
+    <Navbar/>
     <div className="bg-white rounded-lg shadow-md p-6 md:p-8 lg:p-10 container mx-auto mt-12
      w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6 ">
       <form className="mb-3"
@@ -73,7 +77,7 @@ const onSubmit = (data: LoginFormInputs) => {
             />
             {errors.password && <p>{errors.password.message}</p>}
           </div>
-          <button className=' bg-blue-500  hover:bg-blue-600 text-white font-bold py-2 px-4 rounded ' >Login with email</button>
+          <button className=' bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 me-8 rounded' >Login</button>
         </div>
       </form>
       <div className="relative ">
@@ -81,20 +85,21 @@ const onSubmit = (data: LoginFormInputs) => {
           <span className="w-full border-t" />
         </div>
         <div className="relative flex justify-center text-xs uppercase">
-          <span className="bg-background px-2 text-muted-foreground">
-            Or continue with
-          </span>
+          {/* <span className="bg-background px-2 text-muted-foreground">
+            Or if you are new user,pls signUp
+          </span> */}
         </div>
       </div>
-      <button 
+      {/* <button 
       className=" flex justify-center ms-6 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mt-2"
         variant="outline"
         type="button"
-       
+       onClick={()=>login}
       >
-        <p>Google</p>
-        <FcGoogle className='mt-1 ms-2'  />
-      </button>
+        <p>Go SignUp </p>
+       
+      </button> */}
     </div>
+  </>
   );
 }

@@ -25,6 +25,12 @@ export default function Navbar() {
               Add NewBook
             </Link>
             <Link
+              to="/wishlist"
+              className="px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
+            >
+              WishList
+            </Link>
+            <Link
               to="/signup"
               className="px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
             >

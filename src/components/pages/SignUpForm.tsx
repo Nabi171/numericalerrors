@@ -70,21 +70,21 @@ const dispatch=useAppDispatch()
               autoCorrect="off"
             />
           </div>
-          <button className=' bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded'>Create Account</button>
+          <button className=' bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 me-8 rounded'>Create Account</button>
         </div>
       </form>
       <div className="relative">
         <div className="absolute inset-0 flex items-center">
           <span className="w-full border-t" />
         </div>
-        <div className="relative flex justify-center text-xs uppercase">
+        {/* <div className="relative flex justify-center text-xs uppercase">
           <span className="bg-background px-2 text-muted-foreground">
             Or continue with
           </span>
-        </div>
+        </div> */}
       </div>
       {/* <span className="text-center"> */}
-      <div clssName="flex justify-center">
+      {/* <div clssName="flex justify-center">
 
       <button 
         variant="outline"
@@ -94,7 +94,7 @@ const dispatch=useAppDispatch()
         <p>Google</p>
         <FcGoogle className='mt-1 ms-2' />
       </button>
-      </div>
+      </div> */}
     
 
       {/* </span> */}

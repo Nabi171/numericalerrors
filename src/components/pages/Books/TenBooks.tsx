@@ -1,9 +1,9 @@
 /* eslint-disable prettier/prettier */
 import React, { useState } from 'react';
-import SingleBook from "./SingleBook"
+import SingleBk from "./SingleBk"
 import Loading from "../../ui/Loading"
 import { useGetBooksQuery } from '../../../features/books/booksApi';
-export default function AllBooks() {
+export default function TenBooks() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedGenre, setSelectedGenre] = useState('');
   const [selectedYear, setSelectedYear] = useState('')
@@ -85,7 +85,7 @@ const latestPublicationDate = booksdata?.filter(item => new Date(item.publicatio
 
          { filteredData ? <div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-4 gap-4 container mx-auto mt-4">
             {
-              filteredData?.map(book=><SingleBook key={book._id} book={book} />)
+              filteredData?.slice(0,10).map(book=><SingleBk key={book._id} book={book} />)
             }
          </div>
          : 

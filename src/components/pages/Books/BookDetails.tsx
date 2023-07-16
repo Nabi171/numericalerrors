@@ -11,21 +11,21 @@ import {usePostCommentMutation } from '../../../features/books/booksApi';
 import {useGetReviewQuery } from '../../../features/books/booksApi';
 
 
-const dummyComments = [
-  'Bhalo na',
-  'Ki shob ghori egula??',
-  'Eta kono product holo ??',
-  '200 taka dibo, hobe ??',
-];
+
 
 
 export default function BookDetails({book}) {
     const { bookId } = useParams();
-    const {data}=useGetReviewQuery(bookId, {
+    const {data2}=useGetReviewQuery(bookId, {
       refetchOnMountOrArgChange: true,
       pollingInterval: 30000,
     });
-    console.log(data)
+    // console.log(data2)
+    const {data}=useSingleBookQuery(bookId);
+    // console.log('data2',data2)
+
+    // useSingleBookQuery
+
     const [deleteBook] = useDeleteBookMutation(bookId);
   
     const [inputValue, setInputValue] = useState<string>('');
@@ -60,6 +60,7 @@ console.log(bookId)
   console.log(options)
   
   postComment(options)
+  window.location.reload();
     setInputValue('');
   };
 
