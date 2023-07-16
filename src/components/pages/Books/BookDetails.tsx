@@ -8,6 +8,7 @@ import { AiFillDelete } from 'react-icons/ai';
 import { BsFillEnvelopeFill} from "react-icons/bs";
 import { useNavigate } from 'react-router';
 import {usePostCommentMutation } from '../../../features/books/booksApi';
+import {useGetReviewQuery } from '../../../features/books/booksApi';
 
 
 const dummyComments = [
@@ -20,8 +21,13 @@ const dummyComments = [
 
 export default function BookDetails({book}) {
     const { bookId } = useParams();
-    const {data,isLoading,error}=useSingleBookQuery(bookId);
+    const {data}=useGetReviewQuery(bookId, {
+      refetchOnMountOrArgChange: true,
+      pollingInterval: 30000,
+    });
+    console.log(data)
     const [deleteBook] = useDeleteBookMutation(bookId);
+  
     const [inputValue, setInputValue] = useState<string>('');
 
     const [postComment] =
@@ -109,11 +115,11 @@ return (
 
     <div className="mt-10">
     <h2 className='text-white font-extralight font-extrabold mb-2'>Reviews</h2>
-        {dummyComments.map((comment:string, index:number) => (
+        {data?.reviews?.map((review:string, index:number) => (
           <div key={index} className="flex gap-3 items-center mb-5">
           
             <BsFillEnvelopeFill className='text-white' /> 
-            <p className="text-white"> {comment}</p>
+            <p className="text-white"> {review}</p>
           </div>
         ))}
       </div>
