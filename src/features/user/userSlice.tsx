@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { auth } from '../../../src/components/lib/firebase';
-import {createSlice,createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import {
   createUserWithEmailAndPassword,
@@ -16,11 +16,22 @@ interface IUserState {
   error: string | null;
 }
 
- 
+const loadUserFromLocalStorage = (): string | null => {
+  const email = localStorage.getItem('userEmail');
+  return email ? email : null;
+};
+
+const saveUserToLocalStorage = (email: string | null): void => {
+  if (email) {
+    localStorage.setItem('userEmail', email);
+  } else {
+    localStorage.removeItem('userEmail');
+  }
+};
 
 const initialState: IUserState = {
   user: {
-    email: null,
+    email: loadUserFromLocalStorage(),
   },
   isLoading: false,
   isError: false,
@@ -31,7 +42,6 @@ export const createUser = createAsyncThunk(
   'user/createUser',
   async ({ email, password }: ICredential) => {
     const data = await createUserWithEmailAndPassword(auth, email, password);
-
     return data.user.email;
   }
 );
@@ -40,17 +50,18 @@ export const loginUser = createAsyncThunk(
   'user/loginUser',
   async ({ email, password }: ICredential) => {
     const data = await signInWithEmailAndPassword(auth, email, password);
-
+    saveUserToLocalStorage(data.user.email);
     return data.user.email;
   }
 );
 
 const userSlice = createSlice({
-  name: 'user ',
+  name: 'user',
   initialState,
   reducers: {
     setUser: (state, action: PayloadAction<string | null>) => {
       state.user.email = action.payload;
+      saveUserToLocalStorage(action.payload);
     },
     setLoading: (state, action: PayloadAction<boolean>) => {
       state.isLoading = action.payload;

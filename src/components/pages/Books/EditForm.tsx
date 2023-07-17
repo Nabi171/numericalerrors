@@ -1,9 +1,14 @@
 /* eslint-disable prettier/prettier */
-import React, { useState } from 'react';
+import React, { useState,FormEvent } from 'react';
 import { useEditBookMutation } from '../../../features/books/booksApi';
 import { useNavigate } from 'react-router';
 
-export default function EditForm({data}) {
+
+interface EditFormProps {
+  data: any; 
+}
+
+export default function EditForm({data}: EditFormProps) {
     const navigate = useNavigate();
     const {
   _id,
@@ -23,7 +28,7 @@ export default function EditForm({data}) {
 // const [editbook] =useEditBookMutation();
 const [editBook, { isLoading}] =
 useEditBookMutation();
-const handleSubmit = (e) => {
+const handleSubmit = (e:FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     editBook({
         _id,

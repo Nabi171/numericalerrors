@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, { useState } from 'react';
+import React, { useState,FormEvent, ChangeEvent  } from 'react';
 import { useParams } from 'react-router-dom';
 import {useSingleBookQuery} from "../../../features/books/booksApi";
 import {useDeleteBookMutation} from "../../../features/books/booksApi";
@@ -11,11 +11,14 @@ import {usePostCommentMutation } from '../../../features/books/booksApi';
 import {useGetReviewQuery } from '../../../features/books/booksApi';
 
 
+interface BookDetailsProps {
+  book: any; 
+}
 
 
-
-export default function BookDetails({book}) {
-    const { bookId } = useParams();
+export default function BookDetails({book}: BookDetailsProps) {
+ 
+    const { bookId} = useParams();
     const {data2}=useGetReviewQuery(bookId, {
       refetchOnMountOrArgChange: true,
       pollingInterval: 30000,
@@ -34,7 +37,7 @@ export default function BookDetails({book}) {
     usePostCommentMutation();
   
     const navigate = useNavigate();
-    const handleDelete = (bookId) => {
+    const handleDelete = (bookId:string) => {
         deleteBook(bookId);
         // console.log(bookId)
         navigate('/allbooks');
@@ -42,7 +45,7 @@ export default function BookDetails({book}) {
         alert('Are you sure to delete this book?')
     };
 
-  const handleEdit=(bookId)=>{
+  const handleEdit=(bookId:string)=>{
 navigate(`/edit/${bookId}`)
 console.log(bookId)
   }

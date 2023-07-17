@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, { useState } from 'react';
+import React, { useState,FormEvent } from 'react';
 import SingleBook from "./SingleBook"
 import Loading from "../../ui/Loading"
 import { useGetBooksQuery } from '../../../features/books/booksApi';
@@ -7,14 +7,14 @@ export default function AllBooks() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedGenre, setSelectedGenre] = useState('');
   const [selectedYear, setSelectedYear] = useState('')
-  const handleSearch = (e) => {
+  const handleSearch = (e: FormEvent<HTMLFormElement>) => {
     setSearchQuery(e.target.value);
   };
-  const handleGenreChange = (e) => {
+  const handleGenreChange = (e: FormEvent<HTMLFormElement>) => {
     setSelectedGenre(e.target.value);
   };
 
-  const handleYearChange = (e) => {
+  const handleYearChange = (e: FormEvent<HTMLFormElement>) => {
     setSelectedYear(e.target.value);
   };
 
@@ -22,10 +22,10 @@ export default function AllBooks() {
     const { data, isLoading, error } = useGetBooksQuery(undefined);
     const booksdata=data?.data
       const currentDate = new Date();
-const latestPublicationDate = booksdata?.filter(item => new Date(item.publicationDate) <= currentDate)
+const latestPublicationDate: any[] | undefined  = booksdata?.filter(item => new Date(item.publicationDate) <= currentDate)
   .sort((a, b) => new Date(b.publicationDate) - new Date(a.publicationDate));
 
-  const filteredData = latestPublicationDate?.filter((item) => {
+  const filteredData: any[] | undefined  = latestPublicationDate?.filter((item) => {
     const lowerCaseQuery = searchQuery.toLowerCase();
     const lowerCaseGenre = selectedGenre.toLowerCase();
     const publicationYear = item.publicationDate.split(' ')[2];
@@ -91,7 +91,7 @@ const latestPublicationDate = booksdata?.filter(item => new Date(item.publicatio
          : 
          <div className="ms-40 flex ">
           <p className="text-white">Loading.........</p>
-         <Loading className=" text-white" ></Loading>
+         <Loading ></Loading>
          
          </div>
          }

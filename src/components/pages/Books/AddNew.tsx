@@ -5,6 +5,9 @@ import { useAppDispatch } from '../../../app/hooks';
 // import { addBook } from '../../../features/books/booksApi'
 import { useAddBookMutation } from '../../../features/books/booksApi';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export default function AddNew() {
   const [title, setTitle] = useState("");
   // console.log('initial',initialTitle)
@@ -23,7 +26,7 @@ export default function AddNew() {
   }
 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     addBook({
       
@@ -40,6 +43,7 @@ export default function AddNew() {
 
   
     alert('are you sure to add the book?')
+    // toast.success('the book aded!');
     window.location.reload();
   
 

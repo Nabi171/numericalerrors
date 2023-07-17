@@ -35,7 +35,7 @@ const dispatch=useAppDispatch()
       <form 
       onSubmit={handleSubmit(onSubmit)}
       className="">
-        <h5 className='text-center text-blue-400 text-xl font-bold'>Please SignUp</h5>
+        <h5 className='text-center text-blue-400 text-xl font-bold mb-3'>Please SignUp</h5>
         <hr/>
         <div className="grid gap-2">
           <div className="grid gap-1">
@@ -51,6 +51,7 @@ const dispatch=useAppDispatch()
               autoComplete="email"
               autoCorrect="off"
              {...register('email', { required: 'Email is required' })}
+             required
             />
             {errors.email && <p>{errors.email.message}</p>}
             <input
@@ -60,6 +61,7 @@ const dispatch=useAppDispatch()
               autoCapitalize="none"
               autoCorrect="off"
             {...register('password', { required: 'Password is required' })}
+            required
             />
             {errors.password && <p>{errors.password.message}</p>}
             <input
@@ -68,6 +70,7 @@ const dispatch=useAppDispatch()
               type="password"
               autoCapitalize="none"
               autoCorrect="off"
+              required
             />
           </div>
           <button className=' bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 me-8 rounded'>Create Account</button>

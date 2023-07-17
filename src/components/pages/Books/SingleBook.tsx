@@ -1,11 +1,16 @@
 /* eslint-disable prettier/prettier */
 import {useNavigate} from "react-router-dom"
-export default function SingleBook({book}) {
+
+interface SingleBookProps {
+  book: any; 
+}
+
+export default function SingleBook({book}: SingleBookProps) {
 const { title, author, genre, publicationDate }=book;
 const id=book?._id;
 // console.log(id)
 const navigate = useNavigate();
-const handleSingleBook=(id)=>{
+const handleSingleBook=(id: string)=>{
 navigate(`bookdetails/${id}`)
 }
 
