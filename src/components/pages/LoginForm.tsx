@@ -17,7 +17,7 @@ interface LoginFormInputs {
   password: string;
 }
 
-export default function LoginForm({ className, ...props }: UserAuthFormProps) {
+export default function LoginForm({  ...props }: UserAuthFormProps) {
 const {
         register,
         handleSubmit,
@@ -51,7 +51,7 @@ const onSubmit = (data: LoginFormInputs) => {
       onSubmit={handleSubmit(onSubmit)}
       >
         <h5 className='text-center text-blue-400 text-xl font-bold mb-2'>SignIn</h5>
-        <hr clasName='mb-2' />
+        <hr className='mb-2' />
         <div className="grid gap-2">
           <div className="grid gap-1">
             <label className="sr-only" htmlFor="email">

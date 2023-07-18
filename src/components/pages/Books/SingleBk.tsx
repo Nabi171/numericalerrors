@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import {useNavigate} from "react-router-dom"
-export default function SingleBk({book}) {
+export default function SingleBk({book}:any) {
 const { title, author, genre, publicationDate }=book;
 
 // console.log(id)

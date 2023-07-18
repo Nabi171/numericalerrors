@@ -16,6 +16,11 @@ interface IUserState {
   error: string | null;
 }
 
+interface AuthCredentials {
+  email: string;
+  password: string;
+}
+
 const loadUserFromLocalStorage = (): string | null => {
   const email = localStorage.getItem('userEmail');
   return email ? email : null;
@@ -40,7 +45,7 @@ const initialState: IUserState = {
 
 export const createUser = createAsyncThunk(
   'user/createUser',
-  async ({ email, password }: ICredential) => {
+  async ({ email, password }: AuthCredentials) => {
     const data = await createUserWithEmailAndPassword(auth, email, password);
     return data.user.email;
   }
@@ -48,7 +53,7 @@ export const createUser = createAsyncThunk(
 
 export const loginUser = createAsyncThunk(
   'user/loginUser',
-  async ({ email, password }: ICredential) => {
+  async ({ email, password }: AuthCredentials) => {
     const data = await signInWithEmailAndPassword(auth, email, password);
     saveUserToLocalStorage(data.user.email);
     return data.user.email;

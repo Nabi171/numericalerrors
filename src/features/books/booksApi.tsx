@@ -1,5 +1,8 @@
 /* eslint-disable prettier/prettier */
 import { api } from '../../components/api/apiSlice';
+
+
+
 const bookApi = api.injectEndpoints({
   endpoints: (builder) => ({
     getBooks: builder.query({
@@ -14,11 +17,11 @@ const bookApi = api.injectEndpoints({
         method: 'POST',
         body: data,
       }),
-      invalidatesTags: ['reviews'],
+    
     }),
     getReview: builder.query({
       query: (id) => `/review/${id}`,
-      providesTags: ['reviews'],
+     
     }),
     addBook: builder.mutation({
       query: (data) => ({
@@ -42,10 +45,7 @@ const bookApi = api.injectEndpoints({
       method: "PUT",
       body: data,
   }),
-  invalidatesTags: (result, error, arg) => [
-      "book",
-      { type: "book", id: arg.id },
-  ],
+  invalidatesTags:['books'],
    }),  
 
   }),
@@ -57,7 +57,7 @@ export const {
   usePostCommentMutation,
   useGetReviewQuery,
   useAddBookMutation,
-  usePostBookMutation,
+ 
   useSingleBookQuery,
   useDeleteBookMutation,
   useEditBookMutation,

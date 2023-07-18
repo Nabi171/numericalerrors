@@ -48,7 +48,7 @@ return(
     <div className="text-white text-center">
     {books ? (
       <ul className="mt-4">
-        {books.map((book) => (
+        {books.map((book:any) => (
           <li key={book.id} className="mb-4">
             <h3 className="text-xl font-bold">{book.title}</h3>
             <p className="text-gray-400">Author: {book.author}</p>
@@ -58,7 +58,7 @@ return(
             {book.status !== "wishlist" && (
               <button
                 className="btn-wishlist bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
-                onClick={() => addToWishlist(book.id)}
+            
               >
                 Add to Wishlist
               </button>
@@ -68,7 +68,7 @@ return(
             {book.status !== "reading" && (
               <button
                 className="btn-reading bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
-                onClick={() => startReading(book.id)}
+               
               >
                 Start Reading
               </button>
@@ -78,7 +78,7 @@ return(
             {book.status !== "planned" && (
               <button
                 className="btn-plan bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded"
-                onClick={() => planToRead(book.id)}
+            
               >
                 Plan to Read
               </button>
@@ -88,7 +88,7 @@ return(
             {book.status !== "finished" && (
               <button
                 className="btn-finish bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded"
-                onClick={() => finishReading(book.id)}
+              
               >
                 Finish Reading
               </button>

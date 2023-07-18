@@ -4,32 +4,46 @@ import SingleBk from "./SingleBk"
 import Loading from "../../ui/Loading"
 import { useGetBooksQuery } from '../../../features/books/booksApi';
 export default function TenBooks() {
+  interface BookData {
+    data: any;
+    // Other properties...
+  }
+  
+
+  interface Book {
+    title: string;
+    author: string;
+    genre: string;
+    publicationDate: string;
+    reviews?: number;
+  }
+  // ...
+  
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedGenre, setSelectedGenre] = useState('');
-  const [selectedYear, setSelectedYear] = useState('')
-  const handleSearch = (e) => {
+  const [selectedYear, setSelectedYear] = useState('');
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
   };
-  const handleGenreChange = (e) => {
+  const handleGenreChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedGenre(e.target.value);
   };
-
-  const handleYearChange = (e) => {
+  const handleYearChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedYear(e.target.value);
   };
-
-
-    const { data, isLoading, error } = useGetBooksQuery(undefined);
-    const booksdata=data?.data
-      const currentDate = new Date();
-const latestPublicationDate = booksdata?.filter(item => new Date(item.publicationDate) <= currentDate)
-  .sort((a, b) => new Date(b.publicationDate) - new Date(a.publicationDate));
-
+  
+  const { data, isLoading, error } = useGetBooksQuery(undefined);
+  const booksdata: any[] | undefined = data?.data;
+  const currentDate = new Date();
+  const latestPublicationDate = booksdata
+    ?.filter((item) => new Date(item.publicationDate) <= currentDate)
+    .sort((a:any, b:any) => new Date(b.publicationDate).getTime() - new Date(a.publicationDate).getTime());
+  
   const filteredData = latestPublicationDate?.filter((item) => {
     const lowerCaseQuery = searchQuery.toLowerCase();
     const lowerCaseGenre = selectedGenre.toLowerCase();
     const publicationYear = item.publicationDate.split(' ')[2];
-
+  
     return (
       item.title.toLowerCase().includes(lowerCaseQuery) &&
       (lowerCaseGenre === '' || item.genre.toLowerCase() === lowerCaseGenre) &&
@@ -91,7 +105,7 @@ const latestPublicationDate = booksdata?.filter(item => new Date(item.publicatio
          : 
          <div className="ms-40 flex ">
           <p className="text-white">Loading.........</p>
-         <Loading className=" text-white" ></Loading>
+         <Loading  ></Loading>
          
          </div>
          }

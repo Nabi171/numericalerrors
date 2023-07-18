@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React, { useState,FormEvent } from 'react';
+import { ChangeEvent } from 'react';
 import SingleBook from "./SingleBook"
 import Loading from "../../ui/Loading"
 import { useGetBooksQuery } from '../../../features/books/booksApi';
@@ -7,23 +8,26 @@ export default function AllBooks() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedGenre, setSelectedGenre] = useState('');
   const [selectedYear, setSelectedYear] = useState('')
-  const handleSearch = (e: FormEvent<HTMLFormElement>) => {
+  const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
   };
-  const handleGenreChange = (e: FormEvent<HTMLFormElement>) => {
+  const handleGenreChange = (e: ChangeEvent<HTMLSelectElement>) => {
     setSelectedGenre(e.target.value);
   };
 
-  const handleYearChange = (e: FormEvent<HTMLFormElement>) => {
+  const handleYearChange = (e: ChangeEvent<HTMLSelectElement>) => {
     setSelectedYear(e.target.value);
   };
 
-
+  interface Book {
+    publicationDate: Date;
+    // other properties...
+  }
     const { data, isLoading, error } = useGetBooksQuery(undefined);
     const booksdata=data?.data
       const currentDate = new Date();
-const latestPublicationDate: any[] | undefined  = booksdata?.filter(item => new Date(item.publicationDate) <= currentDate)
-  .sort((a, b) => new Date(b.publicationDate) - new Date(a.publicationDate));
+const latestPublicationDate: any[] | undefined   = booksdata?.filter((item:any) => new Date(item.publicationDate) <= currentDate)
+  .sort((a:any, b:any) => new Date(b.publicationDate).getTime() - new Date(a.publicationDate).getTime());
 
   const filteredData: any[] | undefined  = latestPublicationDate?.filter((item) => {
     const lowerCaseQuery = searchQuery.toLowerCase();

@@ -2,12 +2,22 @@
 // import React from 'react';
 import { Link } from "react-router-dom";
 import { useAppSelector,useAppDispatch} from '../../app/hooks';
+import { setUser } from '../../features/user/userSlice';
+import { signOut } from 'firebase/auth';
+import { auth } from '../lib/firebase';
 export default function Navbar() {
   const {user}=useAppSelector((state)=>state.user)
   const dispatch=useAppDispatch()
-const handleLogout=()=>{
+const  handleLogout = (): void => {
+  // const dispatch = useDispatch();
+
   signOut(auth).then(() => {
-    dispatch(setUser(null))
+    // Clear local storage
+    window.localStorage.clear();
+
+    // Dispatch setUser action
+    dispatch(setUser(null));
+
     // Sign-out successful.
   });
 };
@@ -53,7 +63,7 @@ const handleLogout=()=>{
            SignIn
             </Link>}
             { user.email &&  <Link
-              // to="/signup"
+              to=""
               onClick={handleLogout} 
               className="px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
             >

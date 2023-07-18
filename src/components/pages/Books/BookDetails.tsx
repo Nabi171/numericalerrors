@@ -11,18 +11,13 @@ import {usePostCommentMutation } from '../../../features/books/booksApi';
 import {useGetReviewQuery } from '../../../features/books/booksApi';
 
 
-interface BookDetailsProps {
-  book: any; 
-}
 
 
-export default function BookDetails({book}: BookDetailsProps) {
+
+export default function BookDetails({book}:any) {
  
-    const { bookId} = useParams();
-    const {data2}=useGetReviewQuery(bookId, {
-      refetchOnMountOrArgChange: true,
-      pollingInterval: 30000,
-    });
+    const { bookId}:any = useParams();
+  
     // console.log(data2)
     const {data}=useSingleBookQuery(bookId);
     // console.log('data2',data2)
@@ -37,7 +32,7 @@ export default function BookDetails({book}: BookDetailsProps) {
     usePostCommentMutation();
   
     const navigate = useNavigate();
-    const handleDelete = (bookId:string) => {
+    const handleDelete = (bookId:any) => {
         deleteBook(bookId);
         // console.log(bookId)
         navigate('/allbooks');
@@ -45,7 +40,7 @@ export default function BookDetails({book}: BookDetailsProps) {
         alert('Are you sure to delete this book?')
     };
 
-  const handleEdit=(bookId:string)=>{
+  const handleEdit=(bookId:any)=>{
 navigate(`/edit/${bookId}`)
 console.log(bookId)
   }
@@ -67,7 +62,7 @@ console.log(bookId)
     setInputValue('');
   };
 
-  const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
   };
 
