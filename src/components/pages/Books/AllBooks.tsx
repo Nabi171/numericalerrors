@@ -66,7 +66,17 @@ const latestPublicationDate: any[] | undefined   = booksdata?.filter((item:any) 
         <option value="">All Genres</option>
         <option value="fiction">Fiction</option>
         <option value="nonfiction">Non-Fiction</option>
+        <option value="Thriller">Thriller</option>
         <option value="mystery">Mystery</option>
+        <option value="Islamic collection">Islamic</option>
+        <option value="Science Fiction">Science Fiction</option>
+        <option value="Historical Fiction">Historical Fiction</option>
+        <option value="Horror">Horror</option>
+        <option value="Comedy">Comedy</option>
+        <option value="Drama">Drama</option>
+        <option value="Travel">Travel</option>
+        <option value="Poetry">Poetry</option>
+        <option value="Mathmatics">Mathematics</option>
         {/* Add more genre options */}
       </select>
 
