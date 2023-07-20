@@ -27,9 +27,9 @@ export default function AddNew() {
   }
 
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    addBook({
+    await addBook({
       
      
           title,

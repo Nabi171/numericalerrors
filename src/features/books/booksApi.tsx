@@ -17,7 +17,7 @@ const bookApi = api.injectEndpoints({
         method: 'POST',
         body: data,
       }),
-    
+      invalidatesTags: ["reviews"],
     }),
     getReview: builder.query({
       query: (id) => `/review/${id}`,

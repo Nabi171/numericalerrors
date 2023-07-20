@@ -28,9 +28,9 @@ export default function EditForm({data}: EditFormProps) {
 // const [editbook] =useEditBookMutation();
 const [editBook, { isLoading}] =
 useEditBookMutation();
-const handleSubmit = (e:FormEvent<HTMLFormElement>) => {
+const handleSubmit = async (e:FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    editBook({
+    await editBook({
         _id,
         data: {
             title,

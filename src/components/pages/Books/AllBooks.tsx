@@ -4,6 +4,7 @@ import { ChangeEvent } from 'react';
 import SingleBook from "./SingleBook"
 import Loading from "../../ui/Loading"
 import { useGetBooksQuery } from '../../../features/books/booksApi';
+import Footer from '../Footer'
 export default function AllBooks() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedGenre, setSelectedGenre] = useState('');
@@ -109,6 +110,7 @@ const latestPublicationDate: any[] | undefined   = booksdata?.filter((item:any) 
          
          </div>
          }
+         <Footer/>
         </div>
       );;
   }

@@ -9,7 +9,7 @@ import { BsFillEnvelopeFill} from "react-icons/bs";
 import { useNavigate } from 'react-router';
 import {usePostCommentMutation } from '../../../features/books/booksApi';
 import {useGetReviewQuery } from '../../../features/books/booksApi';
-
+import Footer from "../Footer"
 
 
 
@@ -32,14 +32,23 @@ export default function BookDetails({book}:any) {
     usePostCommentMutation();
   
     const navigate = useNavigate();
-    const handleDelete = (bookId:any) => {
-        deleteBook(bookId);
-        // console.log(bookId)
+    // const handleDelete = (bookId:any) => {
+    //     deleteBook(bookId);
+    //     // console.log(bookId)
+    //     navigate('/allbooks');
+    //     window.location.reload();
+    //     alert('Are you sure to delete this book?')
+    // };
+    const handleDelete = async (bookId:any) => {
+      try {
+        await deleteBook(bookId);
+        alert('Are you proceed to delete book?');
         navigate('/allbooks');
         window.location.reload();
-        alert('Are you sure to delete this book?')
+      } catch (error) {
+        console.error('Error deleting book:', error);
+      }
     };
-
   const handleEdit=(bookId:any)=>{
 navigate(`/edit/${bookId}`)
 console.log(bookId)
@@ -47,7 +56,7 @@ console.log(bookId)
 
 
   
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
      
     event.preventDefault();
     const options = {
@@ -57,7 +66,7 @@ console.log(bookId)
     
   console.log(options)
   
-  postComment(options)
+  await postComment(options)
   window.location.reload();
     setInputValue('');
   };
@@ -122,7 +131,7 @@ return (
           </div>
         ))}
       </div>
-
+       <Footer/>
 
 </div>
         </>
