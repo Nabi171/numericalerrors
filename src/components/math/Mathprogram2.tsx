@@ -51,14 +51,14 @@ export default function Mathprogram2() {
 
     return (
         <div className='rounded'  style={{backgroundColor: "#EDF5E1"}}>
-        <p className="text-4xl font-bold text-gray-800 mb-6 text-center mt-2 pt-2">
+        <p className="text-2xl font-bold  text-sky-500 mb-6 text-center mt-2 pt-2">
         Relative Error Calculator
       </p>
 
       <hr />
 
       <div className="flex items-center justify-center">
-        <div className="m-4">
+        <div className="m-4 font-semibold text-gray-600">
           <form method="post" onSubmit={calculateRelativeError}>
             <label htmlFor="approximateValue" className="block mb-2">
               Enter Approximate Value:
@@ -93,14 +93,14 @@ export default function Mathprogram2() {
             </button>
             <button
               type="reset"
-              className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded my-4 ml-2"
+              className="bg-gray-500   hover:bg-gray-700 text-white font-bold py-2 px-4 rounded my-4 ml-2"
               onClick={resetForm}
             >
               Reset
             </button>
           </form>
         </div>
-        <div className="m-4">
+        <div className="m-4 font-bold text-gray-600">
           <h5>Relative Error:</h5>
           {relativeError !== null && (
             <p> {relativeError}</p>

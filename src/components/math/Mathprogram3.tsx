@@ -26,14 +26,14 @@ export default function Mathprogram3() {
 
     return (
         <div className='rounded'  style={{backgroundColor: "#EDF5E1"}}>
-        <p className="text-4xl font-bold text-gray-800 mb-6 text-center mt-2 pt-2">
+        <p className="text-2xl font-bold text-sky-500  mb-6 text-center mt-2 pt-3">
         Percentage Error Calculator
       </p>
 
       <hr />
 
       <div className="flex items-center justify-center">
-        <div className="m-4">
+        <div className="m-4 font-semibold text-gray-600 ">
           <form method="post" onSubmit={calculateRelativeError}>
             <label htmlFor="approximateValue" className="block mb-2">
               Enter Approximate Value:
@@ -62,7 +62,7 @@ export default function Mathprogram3() {
             <br />
             <button
               type="submit"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-4"
+              className="px-4 py-2 border border-blue-500 rounded bg-white text-blue-500 hover:bg-blue-500 hover:text-white"
             >
               Calculate Percentage Error
             </button>
@@ -75,7 +75,7 @@ export default function Mathprogram3() {
             </button>
           </form>
         </div>
-        <div className="m-4">
+        <div className="m-4 text-bold text-gray-600">
           <h5>Percentage Error:</h5>
           {relativeError !== null && (
             <p> {relativeError}%</p>

@@ -54,16 +54,16 @@ export default function MathprogramOne() {
 
     return (
         <div className='rounded'  style={{backgroundColor: "#EDF5E1"}}>
-      <h4 className="text-3xl font-bold text-gray-800 mb-6 text-center pt-2">
+      <h4 className="text-2xl font-bold text-sky-500 mb-6 text-center pt-2">
         Absolute Error Calculator
       </h4>
       
       <hr/>
 
       <div className="flex items-center justify-center">
-        <div className="m-4">
+        <div className="m-4 ">
           <form method="post" onSubmit={calculateAbsoluteError}>
-            <label htmlFor="number1" className="block mb-2">
+            <label htmlFor="number1" className="block mb-2 font-semibold text-gray-600">
               Enter Number 1:
             </label>
             <input
@@ -75,7 +75,7 @@ export default function MathprogramOne() {
               required
             />
 
-            <label htmlFor="number2" className="block my-2">
+            <label htmlFor="number2" className="block my-2 font-semibold text-gray-600">
               Enter Number 2:
             </label>
             <input
@@ -90,7 +90,7 @@ export default function MathprogramOne() {
             <br />
             <button
               type="submit"
-              className="bg-blue-500 hover-bg-blue-700 text-white font-bold py-2 px-4 rounded my-4"
+              className="px-4 py-2 border border-blue-500 rounded bg-white text-blue-500 hover:bg-blue-500 hover:text-white"
             >
               Calculate
             </button>
@@ -103,7 +103,7 @@ export default function MathprogramOne() {
             </button>
           </form>
         </div>
-        <div className="m-4">
+        <div className="m-4 font-bold text-gray-600">
           <h5>The Answer is:</h5>
           {result && (
             <div>

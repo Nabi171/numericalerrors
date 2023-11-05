@@ -56,15 +56,15 @@ function Mathprogram4() {
 
   return (
     <div className="bg-gray-100 min-h-screen mt-2 p-6" style={{backgroundColor: "#EDF5E1"}}>
-      <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">
+      <h1 className="text-2xl font-bold text-sky-500 mb-6 text-center">
         Taylor Series Approximation and Error Analysis
       </h1>
-      <hr className="my-6" />
+      <hr className="my-6 " />
 
       <div className="flex justify-center items-center space-x-4">
         <div className="w-1/2">
           <div className="mb-4">
-            <label className="block mb-2" htmlFor="xValue">
+            <label className="block mb-2 font-semibold" htmlFor="xValue">
               Enter the value of x:
             </label>
             <input
@@ -78,7 +78,7 @@ function Mathprogram4() {
           </div>
 
           <div className="mb-4">
-            <label className="block mb-2" htmlFor="nValue">
+            <label className="block mb-2 font-semibold" htmlFor="nValue">
               Enter the number of terms (n):
             </label>
             <input
@@ -93,7 +93,7 @@ function Mathprogram4() {
 
           <button
             onClick={calculateApproximations}
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            className="px-4 py-2 border border-blue-500 rounded bg-white text-blue-500 hover:bg-blue-500 hover:text-white"
           >
             Calculate
           </button>
