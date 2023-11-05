@@ -28,10 +28,10 @@ const  handleLogout = (): void => {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <div className="flex-shrink-0">
-              <span className="text-white font-bold text-xl">Books Catalogue</span>
+              <span className="text-white font-bold text-xl">Numerical Analysis Presentation</span>
             </div>
           </div>
-          <div className="ml-4 flex items-center md:ml-6">
+          {/* <div className="ml-4 flex items-center md:ml-6">
           {user.email  &&  <Link
               to="/allbooks"
               className="px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
@@ -70,7 +70,7 @@ const  handleLogout = (): void => {
            SignOut
             </Link>}
          
-          </div>
+          </div> */}
         </div>
       </div>
     </nav>
